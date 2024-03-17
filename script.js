@@ -52,7 +52,7 @@ function addToCart(name, price) {
     })
   }
 
-  updateCartModal()
+  updateCartModal();
 }
 
 function updateCartModal() {
@@ -83,8 +83,16 @@ function updateCartModal() {
     // Adiciona o preço do item multiplicado pela quantidade ao total
     total += item.price * item.quantity;
 
-    // Atualiza o total no modal
-    cartTotal.textContent = `R$ ${total.toFixed(2)}`    
-
+    
   })
+  // Atualiza o total no modal
+  cartTotal.textContent = total.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+
+  cartCounter.innerHTML = cart.length;
+
 }
+
+
