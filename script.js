@@ -68,7 +68,7 @@ function updateCartModal() {
         <div>
           <p class="font-bold">${item.name}</p>
           <p>Qtd: ${item.quantity}</p>
-          <p class="font-medium mt-2">R$ ${item.price}</p>
+          <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
         </div>
 
         <button class="text-red-500 font-medium hover:text-red-600">
@@ -77,6 +77,14 @@ function updateCartModal() {
 
       </div>
     `
+
     cartItemsContainer.appendChild(cartItemElement);
+
+    // Adiciona o preço do item multiplicado pela quantidade ao total
+    total += item.price * item.quantity;
+
+    // Atualiza o total no modal
+    cartTotal.textContent = `R$ ${total.toFixed(2)}`    
+
   })
 }
