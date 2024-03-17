@@ -221,7 +221,10 @@
   <!-- FIM MENU -->
 
   <!-- MODAL CART -->
-  <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden">
+  <div 
+    id="cart-modal" 
+    class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden"
+  >
 
     <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
       <h2 class="text-center font-bold text-2xl mb-2">Meu carrinho</h2>
@@ -245,13 +248,15 @@
       </div>
 
     </div>
-
   </div>
   <!-- FIM MODAL CART -->
 
   <!-- BUTTON CART FOOTER -->
   <footer class="w-full bg-red-500 py-3 fixed bottom-0 z-40 flex items-center justify-center">
-    <button class="flex items-center gap-2 text-white font-bold">
+    <button 
+      class="flex items-center gap-2 text-white font-bold"
+      id="cart-btn" 
+    >
       (<span id="cart-count">0</span>)
       Veja meu carrinho
       <i class="fa fa-cart-plus text-lg text-white"></i>
@@ -259,5 +264,6 @@
   </footer>
   <!-- FIM BUTTON CART FOOTER -->
 
+  <script src="./script.js"></script>
 </body>
 </html>
