@@ -129,12 +129,13 @@ addressInput.addEventListener("input", function(event) {
 
 checkoutBtn.addEventListener("click", function() {
   // Desabilitando a verificação do horário de funcionamento temporariamente
-  // const isOpen = checkRestaurantOpen()
+  const isOpen = checkRestaurantOpen()
 
-  // if (!isOpen) {
-  //   alert("Restaurante fechado no momento!")
-  //   return;
-  // }
+  if (!isOpen) {
+    alert("Restaurante fechado no momento!")
+    return;
+  }
+  // =======================================================================
 
   if (cart.length === 0) return;
 
@@ -190,6 +191,7 @@ function updateRestaurantStatus() {
 
 updateRestaurantStatus();
 
+// Scroll top
 const scrollToTopBtn = document.getElementById("scroll-to-top-btn");
 
 scrollToTopBtn.addEventListener("click", () => {
