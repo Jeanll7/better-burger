@@ -106,7 +106,13 @@ function removeItemCart(name) {
 const index = cart.findIndex(item => item.name === name);
 
 if (index !== -1) {
-    cart.splice(index, 1);
+    const item = cart[index];
+
+    if (item.quantity > 1) {
+      item.quantity -= 1;      
+    } else {
+      cart.splice(index, 1)
+    }
     
     updateCartModal();
   }
