@@ -120,15 +120,60 @@ if (index !== -1) {
 
 addressInput.addEventListener("input", function(event) {
   let inputValue = event.target.value;
-  //
-})
-
-checkoutBtn.addEventListener("click", function() {
-  if (cart.length === 0) return;
-  if (addressInput.value === "") {
-    addressWarn.classList.remove("hidden")
-    addressInput.classList.add("border-red-500")
+  
+  if (inputValue !== "") {
+    addressInput.classList.remove("border-red-500")
+    addressWarn.classList.add("hidden")
   }
 })
 
+checkoutBtn.addEventListener("click", function() {
+  // Desabilitando a verificação do horário de funcionamento temporariamente
+  // const isOpen = checkRestaurantOpen()
+
+  // if (!isOpen) {
+  //   alert("Restaurante fechado no momento!")
+  //   return;
+  // }
+
+  if (cart.length === 0) return;
+
+  if (addressInput.value === "") {
+    addressWarn.classList.remove("hidden")
+    addressInput.classList.add("border-red-500")
+    return;
+  }
+
+  // Enviar o pedido para api whatsApp
+  const cartItems = cart.map((item) => {
+      console.log(cartItems)
+  })
+})
+
+// Verificar a hora e manipular o card horário Seg á Sab - 18:30 as 23:30
+function checkRestaurantOpen() {
+  const data = new Date()
+  const hora = data.getHours()
+  const minutos = data.getMinutes();
+  const diaDaSemana = data.getDay()
+
+  const horaAbertura = 18.5; 
+  const horaFechamento = 23.5; 
+  return hora + minutos / 60 >= horaAbertura && hora + minutos / 60 < horaFechamento; 
+}
+
+function updateRestaurantStatus() {
+  const spanItem = document.getElementById("date-span");
+  const isOpen = checkRestaurantOpen();
+
+  if(isOpen) {
+    spanItem.classList.remove("bg-red-900")
+    spanItem.classList.add("bg-green-600")
+  } else {
+    spanItem.classList.remove("bg-green-600")
+    spanItem.classList.add("bg-red-500")
+  }
+}
+
+updateRestaurantStatus()
 
