@@ -71,7 +71,7 @@ function updateCartModal() {
           <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
         </div>
 
-        <button class="text-red-500 font-medium hover:text-red-600">
+        <button class="remove-item text-red-600 font-medium hover:text-red-500">
           Remover
         </button>
 
@@ -92,7 +92,24 @@ function updateCartModal() {
   });
 
   cartCounter.innerHTML = cart.length;
+}
 
+cartItemsContainer.addEventListener("click", function(event) {
+  if (event.target.classList.contains("remove-item")) {
+    const itemElement = event.target.closest(".flex-col"); 
+    const name = itemElement.querySelector(".font-bold").textContent; 
+    removeItemCart(name); 
+  }
+});
+
+function removeItemCart(name) {
+const index = cart.findIndex(item => item.name === name);
+
+if (index !== -1) {
+    cart.splice(index, 1);
+    
+    updateCartModal();
+  }
 }
 
 
