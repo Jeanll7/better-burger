@@ -192,7 +192,9 @@ function updateRestaurantStatus() {
 updateRestaurantStatus();
 
 // Scroll top
-const scrollToTopBtn = document.getElementById("scroll-to-top-btn");
+const scrollToTopBtn = document.getElementById("scroll-top-btn");
+
+scrollToTopBtn.style.display = "none"
 
 scrollToTopBtn.addEventListener("click", () => {
   window.scrollTo({
