@@ -146,8 +146,21 @@ checkoutBtn.addEventListener("click", function() {
 
   // Enviar o pedido para api whatsApp
   const cartItems = cart.map((item) => {
-      console.log(cartItems)
-  })
+    return (
+      ` ${item.name} Qauntidade: (${item.quantity}) Preço: R$${item.price} |`
+    )
+  }).join("")
+
+  const message = encodeURIComponent(cartItems)
+  const phone = "47997574709"
+
+  window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank");
+
+  addressInput.value = "";
+
+  cart = [];
+  updateCartModal();
+
 })
 
 // Verificar a hora e manipular o card horário Seg á Sab - 18:30 as 23:30
