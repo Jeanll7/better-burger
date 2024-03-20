@@ -8,8 +8,30 @@ const closeModalBtn = document.getElementById("close-modal-btn");
 const cartCounter = document.getElementById("cart-count");
 const addressInput = document.getElementById("address");
 const addressWarn = document.getElementById("address-warn");
+const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
 
 let cart = [];
+
+addToCartButtons.forEach(button => {
+  button.addEventListener("click", function () {
+    showToast("Item adicionado ao carrinho");
+  });
+});
+
+function showToast(message) {
+  Toastify({
+    text: message,
+    duration: 3000,
+    close: true,
+    gravity: "top", // `top` or `bottom`
+    position: "right", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: "#222",
+      color: "#fff"
+    },
+  }).showToast();
+}
 
 // Abrir o modal do carrinho
 cartBtn.addEventListener("click", function () {
