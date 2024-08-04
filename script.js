@@ -26,9 +26,8 @@ function showToast(message) {
     gravity: "top", 
     position: "center", 
     style: {
-      background: "#222",
-      color: "#fff"
-    },
+      background: '#111'
+    }
   }).showToast();
 }
 
